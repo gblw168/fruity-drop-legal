@@ -30,7 +30,7 @@
     <script>
         const CLIENT_KEY = 'sbawsky8hn4aganp0s';
         const REDIRECT_URI = encodeURIComponent('https://gblw168.github.io/fruity-drop-legal/login-demo.html');
-        const SCOPE = 'user.info.profile';
+        const SCOPE = 'user.info.basic,user.info.profile';
         const STATE = 'fruity_drop_' + Math.random().toString(36).substring(7);
 
         const authUrl = `https://www.tiktok.com/v2/auth/authorize/?client_key=${CLIENT_KEY}&scope=${SCOPE}&response_type=code&redirect_uri=${REDIRECT_URI}&state=${STATE}`;
