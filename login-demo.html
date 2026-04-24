@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fruity Drop - TikTok Login Demo</title>
+    <style>
+        body { font-family: -apple-system, Arial, sans-serif; max-width: 500px; margin: 80px auto; padding: 0 20px; text-align: center; color: #333; background: #f5f5f5; }
+        h1 { color: #2e8b57; font-size: 32px; }
+        .login-btn { display: inline-block; padding: 14px 40px; background: #000; color: #fff; border-radius: 8px; font-size: 18px; text-decoration: none; margin-top: 30px; }
+        .login-btn:hover { background: #333; }
+        .status { margin-top: 30px; padding: 20px; background: #fff; border-radius: 8px; display: none; }
+        .success { color: #2e8b57; font-size: 20px; font-weight: bold; }
+        p { color: #666; }
+    </style>
+</head>
+<body>
+    <h1>Fruity Drop</h1>
+    <p>Drop and merge fruits to create the ultimate watermelon!</p>
+
+    <div id="login-section">
+        <a class="login-btn" id="loginBtn" href="#">Login with TikTok</a>
+    </div>
+
+    <div class="status" id="status">
+        <p class="success">Login Successful!</p>
+        <p>Authorization code received. Redirecting to game...</p>
+    </div>
+
+    <script>
+        const CLIENT_KEY = 'aw3hrntbbqk858rcaw3hrntbbqk858rc';
+        const REDIRECT_URI = encodeURIComponent('https://gblw168.github.io/fruity-drop-legal/login-demo.html');
+        const SCOPE = 'user.info.profile';
+        const STATE = 'fruity_drop_' + Math.random().toString(36).substring(7);
+
+        const authUrl = `https://www.tiktok.com/v2/auth/authorize/?client_key=${CLIENT_KEY}&scope=${SCOPE}&response_type=code&redirect_uri=${REDIRECT_URI}&state=${STATE}`;
+
+        document.getElementById('loginBtn').href = authUrl;
+
+        // Check if we got redirected back with a code
+        const urlParams = new URLSearchParams(window.location.search);
+        const code = urlParams.get('code');
+        if (code) {
+            document.getElementById('login-section').style.display = 'none';
+            document.getElementById('status').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
