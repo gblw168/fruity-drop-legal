@@ -43,6 +43,10 @@
         if (code) {
             document.getElementById('login-section').style.display = 'none';
             document.getElementById('status').style.display = 'block';
+            // Auto redirect to game after 2 seconds
+            setTimeout(() => {
+                window.location.href = 'game/index.html';
+            }, 2000);
         }
     </script>
 </body>
